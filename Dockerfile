@@ -26,10 +26,13 @@ COPY src/ .
 RUN composer install
 
 # Configure permissões para o diretório de cache do Laravel
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Habilite o módulo de reescrita do Apache
 RUN a2enmod rewrite
+
+COPY ./apache-config.conf /etc/apache2/sites-available/000-default.conf
 
 
 # Exponha a porta 80

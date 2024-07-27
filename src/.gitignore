@@ -13,7 +13,7 @@ Homestead.yaml
 auth.json
 npm-debug.log
 yarn-error.log
-mariadb/ib_logfile*
+mariadb/
 /.fleet
 /.idea
 /.vscode

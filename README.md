@@ -31,31 +31,37 @@ Este projeto é um sistema de gerenciamento para uma clínica veterinária desen
    
    ```bash
    git clone https://github.com/jacsonbleite/clinivetsys.git
-   cd sistema-clinica-veterinaria
+   cd clinivetsys
    ```
 
-2. Configure o arquivo `.env`:
+2. Copie e configure o arquivo `.env`:
    
    ```bash
-   cp .env.example .env
+   cp ./src/.env.example ./src/.env
    ```
 
-3. Gere a chave da aplicação Laravel:
+3. Suba os contêineres Docker:
    
+   3.1. Primeira execução
    ```bash
-   docker-compose exec app php artisan key:generate
+   docker-compose up --build
    ```
-
-4. Suba os contêineres Docker:
-   
+   3.1. Nas próximas
    ```bash
    docker-compose up -d
    ```
+
 
 5. Instale as dependências do Laravel:
    
    ```bash
    docker-compose exec app composer install
+   ```
+
+4. Gere a chave da aplicação Laravel:
+   
+   ```bash
+   docker-compose exec app php artisan key:generate
    ```
 
 6. Execute as migrações do banco de dados:
@@ -103,29 +109,15 @@ O projeto utiliza Docker e Docker Compose para facilitar o ambiente de desenvolv
   docker-compose exec app php artisan <comando>
   ```
 
-- Acessar o contêiner da aplicação:
+- Acessar e sair o contêiner da aplicação:
   
   ```bash
   docker-compose exec app bash
   ```
-
-- Alteração do arquivo /etc/apache2/sites-available/000-default.conf
-  
   ```bash
-  vi /etc/apache2/sites-available/000-default.conf
+  exit
   ```
-  
-  ```
-  <VirtualHost *:80>
-    DocumentRoot /var/www/html/public
-  
-    <Directory /var/www/html/public>
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
-  </VirtualHost>
-  ```
+
 
 ## Licença
 

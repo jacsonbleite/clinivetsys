@@ -1,0 +1,25 @@
+# Ignore os arquivos do Composer
+/vendor/
+composer.lock
+
+# Ignore os arquivos de ambiente
+.env
+
+# Ignore os arquivos de cache do Laravel
+/storage/*
+/bootstrap/cache/*
+
+# Manter a pasta storage e bootstrap/cache, mas sem arquivos dentro
+!/storage/
+!/storage/app/
+!/storage/app/public/
+!/storage/framework/
+!/storage/logs/
+!/bootstrap/cache/
+
+# Ignore arquivos e pastas específicas do sistema
+.DS_Store
+Thumbs.db
+
+# Ignore diretórios de banco de dados
+mariadb/

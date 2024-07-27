@@ -10,10 +10,8 @@ services:
       - "8000:80"
     volumes:
       - ./src:/var/www/html
-    environment:
-      - APP_ENV=local
-      - APP_DEBUG=true
-      - APP_KEY=base64:Fj9FRGTpFfhYlQFJdsQf1BVmk0j0dTXn4RQBaEIWsGQ=
+    env_file:
+      - ./src/.env
     depends_on:
       - db
 
@@ -24,8 +22,5 @@ services:
       - "3306:3306"
     volumes:
       - ./mariadb:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=clinevetsys
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=password
+    env_file:
+      - ./src/.env
